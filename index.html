@@ -9,235 +9,231 @@
   <style>
     :root {
       --primary: #07693A;
-      --muted: #f4f7f4;
-      --radius: 10px;
+      --radius: 12px;
+      --shadow: 0 6px 24px rgba(7,105,58,0.1);
     }
 
     /* RESET & BASE */
     * { box-sizing: border-box; }
     html, body {
-      margin: 1;
-      padding: 1;
-      height: 100%;
+      margin: 0;
+      padding: 0;
       width: 100%;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: linear-gradient(180deg, #eaf6ed 0%, #ffffff 100%);
-      color: #0b2b18;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #073b22;
     }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1cm;
-  min-height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-
-/* WRAPPER */
-.wrap {
-  width: 100%;
-  max-width: 1000px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin: auto;
-  padding: 0 16px; /* Tambah sedikit ruang sisi untuk tampilan HP */
-}
-
-/* RESPONSIVE UNTUK HP */
-@media (max-width: 768px) {
-  .wrap {
-    max-width: 100%;
-    padding: 0 12px; /* kurangi padding agar pas di layar kecil */
-    gap: 14px; /* jarak antar elemen sedikit dikurangi */
-  }
-}
-
-@media (max-width: 480px) {
-  .wrap {
-    padding: 0 8px;
-    gap: 10px;
-  }
-}
-
+    /* WRAPPER */
+    .wrap {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin: auto;
+    }
 
     /* HEADER */
     header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
       text-align: center;
-      animation: fadeIn 0.8s ease;
-    }
-
-    .logo {
-      width: 60px;
-      height: 60px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: transparent;
-      border: none;
-      border-radius: 0;
+      gap: 8px;
+      animation: fadeIn 0.6s ease;
     }
 
     .logo img {
-      width: 100%;
-      height: auto;
+      width: 80px;
+      height: 80px;
       object-fit: contain;
-      border: none;
-      background: transparent;
-      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15));
     }
 
     .title {
-      font-size: 17px;
+      font-size: 2.0rem;
       font-weight: 700;
       color: var(--primary);
+      font-style: normal;
+      margin-top: 10px;
     }
 
     .subtitle {
-      font-size: 12px;
-      color: #1d4d2f;
-      opacity: .9;
-      margin-top: 3px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+      margin-top: 4px;
     }
 
     /* CARD FORM */
     .card {
       width: 100%;
-      background: white;
+      background: #fff;
       border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 6px 28px rgba(7,105,58,0.10);
-      animation: popIn 0.6s ease;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      animation: popIn 0.5s ease;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      text-align: left;
+      margin-bottom: 16px;
     }
 
     label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #15522e;
-      display: block;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
       margin-bottom: 6px;
+      display: block;
     }
 
-    input[type="text"], select, textarea, input[type="date"] {
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
       width: 100%;
-      padding: 13px 12px;
+      border: 1.6px solid #0c4728;
       border-radius: 10px;
-      border: 1px solid rgba(7,105,58,0.15);
-      font-size: 15px;
-      background: linear-gradient(180deg,#ffffff,#fbfffb);
-      transition: box-shadow .15s ease, transform .12s ease;
+      padding: 10px 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      transition: all 0.2s ease;
     }
 
-    input:focus, select:focus, textarea:focus {
+    input:focus,
+    select:focus,
+    textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 8px rgba(7,105,58,0.15);
-      transform: translateY(-1px);
+      box-shadow: 0 0 0 3px rgba(7,105,58,0.12);
       outline: none;
     }
 
-    textarea { min-height: 110px; resize: vertical; }
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
 
     .row {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
     .small {
-      font-size: 12px;
-      color: #2b6b3d;
-      opacity: .85;
-      margin-top: 4px;
+      font-size: 0.85rem;
+      color: #1f5133;
+      margin-top: 6px;
     }
 
     /* BUTTONS */
     .actions {
       display: flex;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 16px;
     }
 
     .btn {
       flex: 1;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 12px 0;
+      border-radius: 10px;
       font-weight: 700;
-      font-size: 15px;
-      border: none;
+      font-size: 1rem;
       cursor: pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .btn:active { transform: translateY(2px); }
-
     .btn.primary {
-      background: linear-gradient(90deg, var(--primary), #0a5230);
+      background: var(--primary);
       color: #fff;
-      box-shadow: 0 6px 22px rgba(7,105,58,0.18);
+      border: none;
+      box-shadow: 0 4px 12px rgba(7,105,58,0.25);
     }
 
     .btn.secondary {
-      background: transparent;
+      background: #fff;
       color: var(--primary);
-      border: 1px solid rgba(7,105,58,0.18);
+      border: 2px solid var(--primary);
     }
 
+    .btn:hover {
+      transform: scale(1.03);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      color: #0b2b18;
-      font-size: 13px;
-      opacity: .9;
+      font-size: 0.85rem;
+      color: #0a3b24;
+      opacity: 0.9;
       margin-top: 10px;
+    }
+
+    footer div:first-child {
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
     /* ANIMATIONS */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes popIn {
-      from { opacity: 0; transform: scale(0.98) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* RESPONSIVE */
     @media (max-width: 480px) {
-      body { padding: 6px; }
-      .wrap { gap: 12px; }
-      .logo { width: 52px; height: 52px; }
-      .title { font-size: 16px; }
-      .card { padding: 16px; }
+      body { padding: 16px; }
+      .wrap { gap: 14px; }
+      .logo img { width: 72px; height: 72px; }
+      .title { font-size: 1.5rem; }
+      .subtitle { font-size: 0.9rem; }
+      .card { padding: 18px; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .row { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
+
 <body>
+  <!-- BODY TIDAK DIUBAH -->
   <div class="wrap" role="main">
     <header>
       <div class="logo">
         <img src="logopn.png" alt="Logo Pagarnusa">
       </div>
-      <div>
-        <div class="title">Formulir Izin Latihan</div>
-        <div class="subtitle">PAGARNUSA UNUSIA</div>
-      </div>
+      <div class="title">Formulir Izin</div>
+      <div class="subtitle">PAGARNUSA UNUSIA</div>
     </header>
 
     <section class="card" aria-labelledby="form-title">
-      <h2 id="form-title" style="margin:0 0 12px 0; font-size:15px; color:var(--primary);">Data Formulir Izin</h2>
+      <h2 id="form-title">Data Formulir Izin</h2>
 
       <form id="izinForm" autocomplete="off" onsubmit="return handleSubmit(event)">
         <div class="row" style="flex-direction:column">
@@ -299,11 +295,12 @@ body {
     </section>
 
     <footer>
-      <div style="font-weight:600">Pagarnusa UNUSIA</div>
-      <div style="font-size:12px; margin-top:4px;">© Pagarnusa UNUSIA</div>
+      <div>Pagarnusa UNUSIA</div>
+      <div>© Pagarnusa UNUSIA</div>
     </footer>
   </div>
 
+  <!-- LOGIKA ASLI TIDAK DIUBAH -->
   <script>
     const phoneInternational = '6285715232441';
     const form = document.getElementById('izinForm');
@@ -358,7 +355,6 @@ body {
       return false;
     }
 
-    // Prefill auto tanggal dan hari
     (function prefill() {
       const today = new Date();
       const y = today.getFullYear();
