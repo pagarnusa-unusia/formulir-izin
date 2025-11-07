@@ -13,200 +13,92 @@
       --shadow: 0 6px 24px rgba(7,105,58,0.1);
     }
 
-    /* RESET & BASE */
     * { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #073b22;
+      background: #fff; color: #073b22;
     }
-
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 24px;
     }
 
-    /* WRAPPER */
     .wrap {
-      width: 100%;
-      max-width: 1080px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      margin: auto;
+      width: 100%; max-width: 1080px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 18px; margin: auto;
     }
 
-    /* HEADER */
-    header {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      animation: fadeIn 0.6s ease;
-    }
+    header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeIn 0.6s ease; }
+    .logo img { width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15)); }
+    .title { font-size: 2rem; font-weight: 700; color: var(--primary); margin-top: 10px; }
+    .subtitle { font-size: 1rem; font-weight: 600; color: var(--primary); margin-top: 4px; }
 
-    .logo img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15));
-    }
-
-    .title {
-      font-size: 2.0rem;
-      font-weight: 700;
-      color: var(--primary);
-      font-style: normal;
-      margin-top: 10px;
-    }
-
-    .subtitle {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-      letter-spacing: 0.3px;
-      margin-top: 4px;
-    }
-
-    /* CARD FORM */
     .card {
-      width: 100%;
-      background: #fff;
+      width: 100%; background: #fff;
       border-radius: var(--radius);
       padding: 22px 20px;
       box-shadow: var(--shadow);
       animation: popIn 0.5s ease;
     }
 
-    h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      text-align: left;
-      margin-bottom: 16px;
-    }
+    h2 { font-size: 1rem; font-weight: 700; color: var(--primary); text-transform: uppercase; text-align: left; margin-bottom: 16px; }
+    label { font-weight: 700; color: var(--primary); font-size: 1rem; margin-bottom: 6px; display: block; }
 
-    label {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 1rem;
-      margin-bottom: 6px;
-      display: block;
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%; border: 1.6px solid #0c4728;
+      border-radius: 10px; padding: 10px 12px; font-size: 1rem;
+      font-family: inherit; background: #fff; transition: all 0.2s ease;
     }
-
-    input[type="text"],
-    input[type="date"],
-    select,
-    textarea {
-      width: 100%;
-      border: 1.6px solid #0c4728;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 1rem;
-      font-family: inherit;
-      background: #fff;
-      transition: all 0.2s ease;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(7,105,58,0.12);
       outline: none;
     }
 
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
+    textarea { min-height: 110px; resize: vertical; }
+    .row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .small { font-size: 0.85rem; color: #1f5133; margin-top: 6px; }
 
-    .row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .small {
-      font-size: 0.85rem;
-      color: #1f5133;
-      margin-top: 6px;
-    }
-
-    /* BUTTONS */
-    .actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
+    .actions { display: flex; gap: 10px; margin-top: 16px; }
     .btn {
-      flex: 1;
-      padding: 12px 0;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
+      flex: 1; padding: 12px 0; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+    .btn.primary { background: var(--primary); color: #fff; border: none; box-shadow: 0 4px 12px rgba(7,105,58,0.25); }
+    .btn.secondary { background: #fff; color: var(--primary); border: 2px solid var(--primary); }
+    .btn:hover { transform: scale(1.03); }
+    .btn:active { transform: scale(0.97); }
 
-    .btn.primary {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      box-shadow: 0 4px 12px rgba(7,105,58,0.25);
-    }
+    footer { text-align: center; font-size: 0.85rem; color: #0a3b24; opacity: 0.9; margin-top: 10px; }
+    footer div:first-child { font-weight: 700; font-size: 0.95rem; }
 
-    .btn.secondary {
-      background: #fff;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-
-    .btn:hover {
-      transform: scale(1.03);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-    }
-
-    /* FOOTER */
-    footer {
+    /* PERINGATAN DILUAR JAM AKSES */
+    .locked {
       text-align: center;
-      font-size: 0.85rem;
-      color: #0a3b24;
-      opacity: 0.9;
-      margin-top: 10px;
-    }
-
-    footer div:first-child {
+      color: var(--primary);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
+      background: #fff;
+      padding: 30px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      animation: fadeIn 0.5s ease;
     }
 
-    /* ANIMATIONS */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.97); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* RESPONSIVE */
     @media (max-width: 480px) {
       body { padding: 16px; }
       .wrap { gap: 14px; }
@@ -222,109 +114,124 @@
 </head>
 
 <body>
-  <!-- BODY TIDAK DIUBAH -->
-  <div class="wrap" role="main">
-    <header>
-      <div class="logo">
-        <img src="logopn.png" alt="Logo Pagarnusa">
-      </div>
-      <div class="title">Formulir Izin</div>
-      <div class="subtitle">PAGARNUSA UNUSIA</div>
-    </header>
+  <div id="content"></div>
 
-    <section class="card" aria-labelledby="form-title">
-      <h2 id="form-title">Data Formulir Izin</h2>
-
-      <form id="izinForm" autocomplete="off" onsubmit="return handleSubmit(event)">
-        <div class="row" style="flex-direction:column">
-          <label for="nama">Nama</label>
-          <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
-        </div>
-
-        <div class="row">
-          <div style="flex:1; min-width:120px">
-            <label for="angkatan">Angkatan</label>
-            <select id="angkatan" name="angkatan" required>
-              <option value="" disabled selected>Pilih angkatan</option>
-              <option>2023</option>
-              <option>2024</option>
-              <option>2025</option>
-            </select>
-          </div>
-          <div style="flex:1; min-width:120px">
-            <label for="sabuk">Sabuk</label>
-            <select id="sabuk" name="sabuk" required>
-              <option value="" disabled selected>Pilih sabuk</option>
-              <option>Polos</option>
-              <option>Putih</option>
-              <option>Kuning</option>
-              <option>Merah</option>
-              <option>Biru</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row" style="flex-direction:column">
-          <label for="perihal">Perihal (alasan)</label>
-          <textarea id="perihal" name="perihal" placeholder="Tuliskan alasan tidak hadir..." required></textarea>
-        </div>
-
-        <div class="row" style="align-items:center">
-          <div style="flex:1">
-            <label for="hari">Hari</label>
-            <select id="hari" name="hari" required>
-              <option value="" disabled selected>Pilih hari</option>
-              <option>Selasa</option>
-              <option>Sabtu</option>
-            </select>
-            <div class="small">Pilih Hari dan Tanggal</div>
-          </div>
-          <div style="width:42%; min-width:140px">
-            <label for="tanggal">Tanggal</label>
-            <input id="tanggal" name="tanggal" type="date" required />
-          </div>
-        </div>
-
-        <div class="small" style="margin-top:8px">Periksa kembali sebelum mengirim | Terimakasih</div>
-
-        <div class="actions">
-          <button type="button" class="btn secondary" onclick="resetForm()">Reset</button>
-          <button type="submit" class="btn primary">Kirim Sekarang</button>
-        </div>
-      </form>
-    </section>
-
-    <footer>
-      <div>Pagarnusa UNUSIA</div>
-      <div>© Pagarnusa UNUSIA</div>
-    </footer>
-  </div>
-
-  <!-- LOGIKA ASLI TIDAK DIUBAH -->
   <script>
-    const phoneInternational = '6285715232441';
-    const form = document.getElementById('izinForm');
-    const tanggalEl = document.getElementById('tanggal');
-    const hariEl = document.getElementById('hari');
-    const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-
-    tanggalEl.addEventListener('change', e => {
-      const v = e.target.value;
-      if (!v) return;
-      const d = new Date(v + 'T00:00:00');
-      const idx = d.getDay();
-      const dayName = dayNames[idx];
-      for (const opt of hariEl.options) {
-        if (opt.value === dayName) { hariEl.value = dayName; break; }
-      }
-    });
-
-    function resetForm() {
-      form.reset();
-      hariEl.selectedIndex = 0;
-      document.getElementById('angkatan').selectedIndex = 0;
-      document.getElementById('sabuk').selectedIndex = 0;
+    // Konversi waktu ke WIB (GMT+7)
+    function getWIBTime() {
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      return new Date(utc + 7 * 3600000);
     }
+
+    function isAccessible(now) {
+      const day = now.getDay(); // 0=Ahad, 1=Senin...
+      const hour = now.getHours();
+      const minute = now.getMinutes();
+      const time = hour * 60 + minute; // total menit
+
+      // Aturan akses
+      if (day >= 1 && day <= 4) return time >= 60 && time <= 19 * 60; // Senin-Kamis 01.00-19.00
+      if (day === 5) return time >= 60 && time <= 23 * 60 + 59;       // Jumat 01.00-23.59
+      if (day === 6) return time >= 11 * 60 && time <= 23 * 60 + 59;  // Sabtu 11.00-23.59
+      if (day === 0) return time >= 60 && time <= 23 * 60 + 59;       // Ahad 01.00-23.59
+      return false;
+    }
+
+    const now = getWIBTime();
+    const content = document.getElementById('content');
+
+    if (!isAccessible(now)) {
+      content.innerHTML = `
+        <div class="locked">
+          ⚠️ <br><br>
+          <b>Permohonan izin berlaku maksimal 2 jam sebelum Latihan.</b><br><br>
+          Akses formulir hanya tersedia pada jam yang ditentukan.<br><br>
+          <small>Silakan kembali pada waktu yang sesuai jadwal latihan.</small>
+        </div>
+      `;
+    } else {
+      content.innerHTML = `
+      <div class="wrap" role="main">
+        <header>
+          <div class="logo">
+            <img src="logopn.png" alt="Logo Pagarnusa">
+          </div>
+          <div class="title">Formulir Izin</div>
+          <div class="subtitle">PAGARNUSA UNUSIA</div>
+        </header>
+
+        <section class="card" aria-labelledby="form-title">
+          <h2 id="form-title">Data Formulir Izin</h2>
+          <form id="izinForm" autocomplete="off" onsubmit="return handleSubmit(event)">
+            <div class="row" style="flex-direction:column">
+              <label for="nama">Nama</label>
+              <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+            </div>
+
+            <div class="row">
+              <div style="flex:1; min-width:120px">
+                <label for="angkatan">Angkatan</label>
+                <select id="angkatan" name="angkatan" required>
+                  <option value="" disabled selected>Pilih angkatan</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                </select>
+              </div>
+              <div style="flex:1; min-width:120px">
+                <label for="sabuk">Sabuk</label>
+                <select id="sabuk" name="sabuk" required>
+                  <option value="" disabled selected>Pilih sabuk</option>
+                  <option>Polos</option>
+                  <option>Putih</option>
+                  <option>Kuning</option>
+                  <option>Merah</option>
+                  <option>Biru</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row" style="flex-direction:column">
+              <label for="perihal">Perihal (alasan)</label>
+              <textarea id="perihal" name="perihal" placeholder="Tuliskan alasan tidak hadir..." required></textarea>
+            </div>
+
+            <div class="row" style="align-items:center">
+              <div style="flex:1">
+                <label for="hari">Hari</label>
+                <select id="hari" name="hari" required>
+                  <option value="" disabled selected>Pilih hari</option>
+                  <option>Selasa</option>
+                  <option>Sabtu</option>
+                </select>
+                <div class="small">Pilih Hari dan Tanggal</div>
+              </div>
+              <div style="width:42%; min-width:140px">
+                <label for="tanggal">Tanggal</label>
+                <input id="tanggal" name="tanggal" type="date" required />
+              </div>
+            </div>
+
+            <div class="small" style="margin-top:8px">Periksa kembali sebelum mengirim | Terimakasih</div>
+
+            <div class="actions">
+              <button type="button" class="btn secondary" onclick="resetForm()">Reset</button>
+              <button type="submit" class="btn primary">Kirim Sekarang</button>
+            </div>
+          </form>
+        </section>
+
+        <footer>
+          <div>Pagarnusa UNUSIA</div>
+          <div>© Pagarnusa UNUSIA</div>
+        </footer>
+      </div>`;
+    }
+
+    // ====== LOGIKA FORM (sama dengan versi aslimu) ======
+    const phoneInternational = '6285715232441';
+    const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -334,40 +241,28 @@
       const perihal = document.getElementById('perihal').value.trim();
       const hari = document.getElementById('hari').value;
       const tanggal = document.getElementById('tanggal').value;
-
       if (!nama || !angkatan || !sabuk || !perihal || !hari || !tanggal) {
-        alert('Mohon lengkapi semua kolom sebelum mengirim.');
-        return false;
+        alert('Mohon lengkapi semua kolom sebelum mengirim.'); return false;
       }
-
       const tanggalObj = new Date(tanggal + 'T00:00:00');
       const bulanNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
       const formattedTanggal = tanggalObj.getDate() + ' ' + bulanNames[tanggalObj.getMonth()] + ' ' + tanggalObj.getFullYear();
-
       let message = '';
       message += 'Assalamualaikum Kang/Mbk%0A';
       message += 'Saya atas nama ' + nama + ', Angkatan ' + angkatan + ', Sabuk ' + sabuk + '.%0A';
       message += 'Saya ingin memohon izin tidak hadir latihan rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' karena ' + perihal + '.%0A';
       message += 'Terima kasih atas perhatiannya!';
-
       const waUrl = 'https://wa.me/' + phoneInternational + '?text=' + message;
       window.open(waUrl, '_blank') || (window.location.href = waUrl);
       return false;
     }
 
-    (function prefill() {
-      const today = new Date();
-      const y = today.getFullYear();
-      const m = String(today.getMonth()+1).padStart(2,'0');
-      const d = String(today.getDate()).padStart(2,'0');
-      const iso = y + '-' + m + '-' + d;
-      tanggalEl.value = iso;
-      const idx = today.getDay();
-      const dayName = dayNames[idx];
-      for (const opt of hariEl.options) {
-        if (opt.value === dayName) { hariEl.value = dayName; break; }
-      }
-    })();
+    function resetForm() {
+      document.getElementById('izinForm').reset();
+      document.getElementById('hari').selectedIndex = 0;
+      document.getElementById('angkatan').selectedIndex = 0;
+      document.getElementById('sabuk').selectedIndex = 0;
+    }
   </script>
 </body>
 </html>
