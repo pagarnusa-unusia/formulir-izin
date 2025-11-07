@@ -2,207 +2,203 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Izin Latihan — PAGARNUSA UNUSIA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#07693A" />
-
   <style>
-    :root{
+    :root {
       --primary: #07693A;
       --muted: #f4f7f4;
-      --accent: rgba(7,105,58,0.08);
-      --glass: rgba(255,255,255,0.06);
       --radius: 14px;
     }
 
-    /* Reset & base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    /* RESET & BASE */
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', system-ui, sans-serif;
       background: linear-gradient(180deg, #eaf6ed 0%, #ffffff 100%);
-      color:#0b2b18;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:12px 16px 40px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      min-height:100vh;
+      color: #0b2b18;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Container */
-    .wrap{
-      width:100%;
-      max-width:460px;
-      margin-top:8px;
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
     }
 
-    /* Header */
-    header{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:14px;
-      animation: slideDown 700ms cubic-bezier(.2,.9,.3,1);
-    }
-    .logo{
-      width:64px;
-      height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:transparent;
-      border:none;
-      box-shadow:none;
-      border-radius:0;
-      animation: float 3s ease-in-out infinite;
-    }
-    .logo img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      border:none;
-      background:transparent;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-    }
-
-    .title{
-      font-size:18px;
-      font-weight:700;
-      color:var(--primary);
-    }
-
-    .subtitle{
-      font-size:12px;
-      color:#1d4d2f;
-      opacity:.9;
-      margin-top:4px;
-    }
-
-    /* Card */
-    .card{
-      background: white;
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: 0 8px 30px rgba(4,40,20,0.06);
-      overflow:hidden;
-      position:relative;
-      animation: pop 650ms cubic-bezier(.2,.9,.3,1);
-    }
-
-    .card:before{
-      content:"";
-      position:absolute;
-      right:-60px;
-      top:-40px;
-      width:160px;height:160px;
-      background: radial-gradient(circle at 30% 30%, rgba(7,105,58,0.12), transparent 30%);
-      transform: rotate(20deg);
-      pointer-events:none;
-    }
-
-    form .row{
-      display:flex;
-      gap:10px;
-      margin-bottom:12px;
-    }
-    label{
-      display:block;
-      font-size:12px;
-      color:#15522e;
-      margin-bottom:6px;
-      font-weight:600;
-    }
-    input[type="text"], select, textarea, input[type="date"]{
-      width:100%;
-      padding:14px 12px;
-      border-radius:12px;
-      border:1px solid rgba(7,105,58,0.12);
-      outline:none;
-      font-size:15px;
-      background:linear-gradient(180deg,#ffffff,#fbfffb);
-      transition: box-shadow .18s ease, transform .12s ease, border-color .12s ease;
-      box-shadow: 0 1px 0 rgba(3,20,10,0.02) inset;
-    }
-    input:focus, select:focus, textarea:focus{
-      box-shadow: 0 6px 22px rgba(7,105,58,0.08);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-    textarea{ min-height:120px; resize:vertical; }
-
-    .small{
-      font-size:12px;
-      color:#2b6b3d;
-      opacity:.85;
-      margin-top:6px;
-    }
-
-    .actions{display:flex; gap:10px; align-items:center; margin-top:8px}
-    .btn{
-      flex:1;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px;
-      border-radius:12px;
-      font-weight:700;
-      border:none;
-      color:white;
-      background: linear-gradient(90deg,var(--primary), #0a5230);
-      box-shadow: 0 10px 30px rgba(7,105,58,0.18);
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .btn:active{ transform: translateY(2px) }
-    .btn .icon{ width:18px; height:18px; opacity:.95 }
-
-    .btn.secondary{
+    /* WRAPPER */
+    .wrap {
+      width: 100%;
+      max-width: 460px;
       background: transparent;
-      color:var(--primary);
-      border:1px solid rgba(7,105,58,0.12);
-      box-shadow:none;
-      font-weight:600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin: auto;
     }
 
-    footer{
-      margin-top:16px;
-      text-align:center;
-      color:#0b2b18;
-      font-size:13px;
-      opacity:.9;
+    /* HEADER */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
     }
 
-    /* Animations */
-    @keyframes float{
-      0%{ transform: translateY(-6px) }
-      50%{ transform: translateY(6px) }
-      100%{ transform: translateY(-6px) }
-    }
-    @keyframes pop{
-      0%{ transform: translateY(10px) scale(.995); opacity:0 }
-      100%{ transform: translateY(0) scale(1); opacity:1 }
-    }
-    @keyframes slideDown{
-      0%{ transform: translateY(-6px); opacity:0 }
-      100%{ transform: translateY(0); opacity:1 }
+    .logo {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 0;
     }
 
-    .hint{ font-size:12px; color:#3b7a52; opacity:.9 }
+    .logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: none;
+      background: transparent;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
+    }
 
-    @media (max-width:480px){
-      .wrap{ margin-top:4px; }
-      header{ margin-top:0; }
-      .logo{ width:52px; height:52px; }
-      .title{ font-size:16px; }
-      body{ padding:10px 12px 36px; }
+    .title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #1d4d2f;
+      opacity: .9;
+      margin-top: 3px;
+    }
+
+    /* CARD FORM */
+    .card {
+      width: 100%;
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 6px 28px rgba(7,105,58,0.10);
+      animation: popIn 0.6s ease;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #15522e;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"], select, textarea, input[type="date"] {
+      width: 100%;
+      padding: 13px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(7,105,58,0.15);
+      font-size: 15px;
+      background: linear-gradient(180deg,#ffffff,#fbfffb);
+      transition: box-shadow .15s ease, transform .12s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(7,105,58,0.15);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #2b6b3d;
+      opacity: .85;
+      margin-top: 4px;
+    }
+
+    /* BUTTONS */
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .btn:active { transform: translateY(2px); }
+
+    .btn.primary {
+      background: linear-gradient(90deg, var(--primary), #0a5230);
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(7,105,58,0.18);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid rgba(7,105,58,0.18);
+    }
+
+    footer {
+      text-align: center;
+      color: #0b2b18;
+      font-size: 13px;
+      opacity: .9;
+      margin-top: 10px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.98) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      body { padding: 6px; }
+      .wrap { gap: 12px; }
+      .logo { width: 52px; height: 52px; }
+      .title { font-size: 16px; }
+      .card { padding: 16px; }
     }
   </style>
 </head>
@@ -210,7 +206,6 @@
   <div class="wrap" role="main">
     <header>
       <div class="logo">
-        <!-- Ganti src di bawah ini dengan file logo Anda -->
         <img src="logopn.png" alt="Logo Pagarnusa">
       </div>
       <div>
@@ -238,7 +233,6 @@
               <option>2025</option>
             </select>
           </div>
-
           <div style="flex:1; min-width:120px">
             <label for="sabuk">Sabuk</label>
             <select id="sabuk" name="sabuk" required>
@@ -260,34 +254,31 @@
         <div class="row" style="align-items:center">
           <div style="flex:1">
             <label for="hari">Hari</label>
-            <select id="hari" name="hari" required aria-describedby="hariHelp">
+            <select id="hari" name="hari" required>
               <option value="" disabled selected>Pilih hari</option>
               <option>Selasa</option>
               <option>Sabtu</option>
             </select>
-            <div id="hariHelp" class="small">Pilih Hari dan Tanggal</div>
+            <div class="small">Pilih Hari dan Tanggal</div>
           </div>
-
           <div style="width:42%; min-width:140px">
             <label for="tanggal">Tanggal</label>
             <input id="tanggal" name="tanggal" type="date" required />
           </div>
         </div>
 
-        <div class="small hint" style="margin-top:6px">
-          Periksa kembali sebelum mengirim | Terimakasih
-        </div>
+        <div class="small" style="margin-top:8px">Periksa kembali sebelum mengirim | Terimakasih</div>
 
         <div class="actions">
           <button type="button" class="btn secondary" onclick="resetForm()">Reset</button>
-          <button type="submit" class="btn">Kirim Sekarang</button>
+          <button type="submit" class="btn primary">Kirim Sekarang</button>
         </div>
       </form>
     </section>
 
     <footer>
-      <div style="margin-top:12px; font-weight:600">Pagarnusa UNUSIA</div>
-      <div style="font-size:12px; margin-top:6px; opacity:.8">© Pagarnusa UNUSIA</div>
+      <div style="font-weight:600">Pagarnusa UNUSIA</div>
+      <div style="font-size:12px; margin-top:4px;">© Pagarnusa UNUSIA</div>
     </footer>
   </div>
 
@@ -300,25 +291,23 @@
 
     tanggalEl.addEventListener('change', e => {
       const v = e.target.value;
-      if(!v) return;
+      if (!v) return;
       const d = new Date(v + 'T00:00:00');
       const idx = d.getDay();
       const dayName = dayNames[idx];
-      for(const opt of hariEl.options){
-        if(opt.value === dayName){ hariEl.value = dayName; break; }
+      for (const opt of hariEl.options) {
+        if (opt.value === dayName) { hariEl.value = dayName; break; }
       }
     });
 
-    function resetForm(){
+    function resetForm() {
       form.reset();
       hariEl.selectedIndex = 0;
       document.getElementById('angkatan').selectedIndex = 0;
       document.getElementById('sabuk').selectedIndex = 0;
-      document.querySelector('.card').style.transform = 'scale(0.995)';
-      setTimeout(()=> document.querySelector('.card').style.transform = '', 160);
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
       e.preventDefault();
       const nama = document.getElementById('nama').value.trim();
       const angkatan = document.getElementById('angkatan').value;
@@ -327,7 +316,7 @@
       const hari = document.getElementById('hari').value;
       const tanggal = document.getElementById('tanggal').value;
 
-      if(!nama || !angkatan || !sabuk || !perihal || !hari || !tanggal){
+      if (!nama || !angkatan || !sabuk || !perihal || !hari || !tanggal) {
         alert('Mohon lengkapi semua kolom sebelum mengirim.');
         return false;
       }
@@ -339,7 +328,7 @@
       let message = '';
       message += 'Assalamualaikum Kang/Mbk%0A';
       message += 'Saya atas nama ' + nama + ', Angkatan ' + angkatan + ', Sabuk ' + sabuk + '.%0A';
-      message += 'Saya ingin memohon izin tidak dapat hadir latihan rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' dikarenakan ' + perihal + '.%0A';
+      message += 'Saya ingin memohon izin tidak hadir latihan rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' karena ' + perihal + '.%0A';
       message += 'Terima kasih atas perhatiannya!';
 
       const waUrl = 'https://wa.me/' + phoneInternational + '?text=' + message;
@@ -347,17 +336,18 @@
       return false;
     }
 
-    (function prefill(){
+    // Prefill auto tanggal dan hari
+    (function prefill() {
       const today = new Date();
       const y = today.getFullYear();
       const m = String(today.getMonth()+1).padStart(2,'0');
       const d = String(today.getDate()).padStart(2,'0');
       const iso = y + '-' + m + '-' + d;
-      if(!tanggalEl.value) tanggalEl.value = iso;
+      tanggalEl.value = iso;
       const idx = today.getDay();
       const dayName = dayNames[idx];
-      for(const opt of hariEl.options){
-        if(opt.value === dayName){ hariEl.value = dayName; break; }
+      for (const opt of hariEl.options) {
+        if (opt.value === dayName) { hariEl.value = dayName; break; }
       }
     })();
   </script>
