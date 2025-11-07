@@ -26,17 +26,19 @@
       color:#0b2b18;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      padding:20px;
+      padding:12px 16px 40px;
       display:flex;
-      align-items:flex-start;
-      justify-content:center;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:100vh;
     }
 
     /* Container */
     .wrap{
       width:100%;
-      max-width:460px; /* mobile-friendly */
-      margin: 8px;
+      max-width:460px;
+      margin-top:8px;
     }
 
     /* Header */
@@ -47,22 +49,32 @@
       margin-bottom:14px;
       animation: slideDown 700ms cubic-bezier(.2,.9,.3,1);
     }
-.logo{
-  width:60px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:transparent;
-  box-shadow:none;
-  border-radius:0;
-  animation: float 3s ease-in-out infinite;
-}
-.logo img{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-}
+    .logo{
+      width:64px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      border-radius:0;
+      animation: float 3s ease-in-out infinite;
+    }
+    .logo img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      border:none;
+      background:transparent;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .title{
+      font-size:18px;
+      font-weight:700;
+      color:var(--primary);
+    }
 
     .subtitle{
       font-size:12px;
@@ -82,7 +94,6 @@
       animation: pop 650ms cubic-bezier(.2,.9,.3,1);
     }
 
-    /* floating decorative */
     .card:before{
       content:"";
       position:absolute;
@@ -124,7 +135,6 @@
     }
     textarea{ min-height:120px; resize:vertical; }
 
-    /* small helper */
     .small{
       font-size:12px;
       color:#2b6b3d;
@@ -132,7 +142,6 @@
       margin-top:6px;
     }
 
-    /* Submit */
     .actions{display:flex; gap:10px; align-items:center; margin-top:8px}
     .btn{
       flex:1;
@@ -163,7 +172,6 @@
       font-weight:600;
     }
 
-    /* Footer */
     footer{
       margin-top:16px;
       text-align:center;
@@ -172,7 +180,7 @@
       opacity:.9;
     }
 
-    /* Tiny animations */
+    /* Animations */
     @keyframes float{
       0%{ transform: translateY(-6px) }
       50%{ transform: translateY(6px) }
@@ -187,24 +195,24 @@
       100%{ transform: translateY(0); opacity:1 }
     }
 
-    /* microhelp */
     .hint{ font-size:12px; color:#3b7a52; opacity:.9 }
 
-    /* Responsive tweaks */
-    @media (max-width:420px){
-      body{padding:14px}
-      .logo{width:48px;height:48px}
-      .title{font-size:17px}
+    @media (max-width:480px){
+      .wrap{ margin-top:4px; }
+      header{ margin-top:0; }
+      .logo{ width:52px; height:52px; }
+      .title{ font-size:16px; }
+      body{ padding:10px 12px 36px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
     <header>
-<div class="logo">
-  <img src="logopn.png" alt="Logo Pagarnusa" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
-</div>
-
+      <div class="logo">
+        <!-- Ganti src di bawah ini dengan file logo Anda -->
+        <img src="logopn.png" alt="Logo Pagarnusa">
+      </div>
       <div>
         <div class="title">Formulir Izin Latihan</div>
         <div class="subtitle">PAGARNUSA UNUSIA</div>
@@ -217,7 +225,7 @@
       <form id="izinForm" autocomplete="off" onsubmit="return handleSubmit(event)">
         <div class="row" style="flex-direction:column">
           <label for="nama">Nama</label>
-          <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required inputmode="text" />
+          <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
         </div>
 
         <div class="row">
@@ -267,19 +275,12 @@
         </div>
 
         <div class="small hint" style="margin-top:6px">
-          Periksa kembali sebelum mengirim — pesan akan dibuka di WhatsApp.
+          Periksa kembali sebelum mengirim | Terimakasih
         </div>
 
         <div class="actions">
-          <button type="button" class="btn secondary" onclick="resetForm()" aria-label="Reset form">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8h-2a6 6 0 11-6-6z" fill="currentColor"/></svg>
-            Reset
-          </button>
-
-          <button type="submit" class="btn" aria-label="Kirim ke WhatsApp">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 3.5L3 21c-.4.4-.9.6-1.5.6-.6 0-1.2-.2-1.6-.6C-.5 20 .5 18 2.5 15.5 4.4 13.2 11 6 11 6s0 4.6 2.5 7.5C16 14 21 11 21 11s-1.6 0-1.5-7.5L20.5 3.5z" fill="white"/></svg>
-            Kirim Sekarang
-          </button>
+          <button type="button" class="btn secondary" onclick="resetForm()">Reset</button>
+          <button type="submit" class="btn">Kirim Sekarang</button>
         </div>
       </form>
     </section>
@@ -291,44 +292,34 @@
   </div>
 
   <script>
-    // --- Utils ---
-    const phoneInternational = '6285715232441'; // +62 85715232441 -> masukkan tanpa tanda +
+    const phoneInternational = '6285715232441';
     const form = document.getElementById('izinForm');
     const tanggalEl = document.getElementById('tanggal');
     const hariEl = document.getElementById('hari');
-
-    // Map JS day index to Indonesian day names
     const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
-    // When date changes, auto-fill the 'hari' select to match date
-    tanggalEl.addEventListener('change', (e) => {
+    tanggalEl.addEventListener('change', e => {
       const v = e.target.value;
       if(!v) return;
-      const d = new Date(v + 'T00:00:00'); // avoid timezone weirdness
+      const d = new Date(v + 'T00:00:00');
       const idx = d.getDay();
       const dayName = dayNames[idx];
-      // set select if option exists
       for(const opt of hariEl.options){
         if(opt.value === dayName){ hariEl.value = dayName; break; }
       }
     });
 
-    // Reset form gently with tiny animation
     function resetForm(){
       form.reset();
-      // remove selected placeholder statuses by setting selects to empty
       hariEl.selectedIndex = 0;
       document.getElementById('angkatan').selectedIndex = 0;
       document.getElementById('sabuk').selectedIndex = 0;
-      // small visual cue
       document.querySelector('.card').style.transform = 'scale(0.995)';
       setTimeout(()=> document.querySelector('.card').style.transform = '', 160);
     }
 
-    // Validate basic inputs and create template message
     function handleSubmit(e){
       e.preventDefault();
-
       const nama = document.getElementById('nama').value.trim();
       const angkatan = document.getElementById('angkatan').value;
       const sabuk = document.getElementById('sabuk').value;
@@ -336,80 +327,39 @@
       const hari = document.getElementById('hari').value;
       const tanggal = document.getElementById('tanggal').value;
 
-      // Basic validation
       if(!nama || !angkatan || !sabuk || !perihal || !hari || !tanggal){
         alert('Mohon lengkapi semua kolom sebelum mengirim.');
         return false;
       }
 
-      // Format tanggal ke bentuk yang ramah (DD MMMM YYYY) dalam bahasa Indonesia
       const tanggalObj = new Date(tanggal + 'T00:00:00');
       const bulanNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
       const formattedTanggal = tanggalObj.getDate() + ' ' + bulanNames[tanggalObj.getMonth()] + ' ' + tanggalObj.getFullYear();
 
-      // Template message (user-required)
-      // Note: include hari + tanggal in the sentence
       let message = '';
-      message += 'Assalamualaikum Kang/Mbk' + '\\n';
-      message += 'Saya atas nama ' + nama + ', Angkatan ' + angkatan + ', Sabuk ' + sabuk + '.' + '\\n';
-      message += 'Saya ingin memohon izin tidak dapat hadir Latihan Rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' dikarenakan ' + perihal + '.' + '\\n';
-      message += 'Terimakasih atas perhatiannya!';
+      message += 'Assalamualaikum Kang/Mbk%0A';
+      message += 'Saya atas nama ' + nama + ', Angkatan ' + angkatan + ', Sabuk ' + sabuk + '.%0A';
+      message += 'Saya ingin memohon izin tidak dapat hadir latihan rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' dikarenakan ' + perihal + '.%0A';
+      message += 'Terima kasih atas perhatiannya!';
 
-      // Encode message for URL
-      const encoded = encodeURIComponent(message);
-
-      // Build wa.me url
-      const waUrl = 'https://wa.me/' + phoneInternational + '?text=' + encoded;
-
-      // Open WA in new tab/window (mobile will redirect to app if installed)
-      // Use location.href instead of window.open on some mobile browsers for better app behavior:
-      // But we attempt window.open first, then fallback to location assignment.
-      let opened = false;
-      try {
-        const newWindow = window.open(waUrl, '_blank');
-        if(newWindow){
-          opened = true;
-          // close the tab? not necessary
-        }
-      } catch(err){
-        opened = false;
-      }
-
-      if(!opened){
-        // fallback: direct assign
-        window.location.href = waUrl;
-      }
-
+      const waUrl = 'https://wa.me/' + phoneInternational + '?text=' + message;
+      window.open(waUrl, '_blank') || (window.location.href = waUrl);
       return false;
     }
 
-    // Small progressive enhancement: prefill date with today's date
     (function prefill(){
       const today = new Date();
       const y = today.getFullYear();
       const m = String(today.getMonth()+1).padStart(2,'0');
       const d = String(today.getDate()).padStart(2,'0');
       const iso = y + '-' + m + '-' + d;
-      // don't override user input if they already set something
       if(!tanggalEl.value) tanggalEl.value = iso;
-      // set corresponding day
       const idx = today.getDay();
       const dayName = dayNames[idx];
       for(const opt of hariEl.options){
         if(opt.value === dayName){ hariEl.value = dayName; break; }
       }
     })();
-
-    // Improve UX for Safari mobile: make date input more prominent by focusing it when tapping label
-    document.querySelectorAll('label').forEach(lbl=>{
-      lbl.addEventListener('click', (ev)=>{
-        const forId = lbl.getAttribute('for');
-        if(forId){
-          const el = document.getElementById(forId);
-          if(el) el.focus();
-        }
-      });
-    });
   </script>
 </body>
 </html>
