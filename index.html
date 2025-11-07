@@ -130,13 +130,18 @@
       const minute = now.getMinutes();
       const time = hour * 60 + minute; // total menit
 
-      // Aturan akses
-      if (day >= 1 && day <= 4) return time >= 60 && time <= 19 * 60; // Senin-Kamis 01.00-19.00
-      if (day === 5) return time >= 60 && time <= 23 * 60 + 59;       // Jumat 01.00-23.59
-      if (day === 6) return time >= 11 * 60 && time <= 23 * 60 + 59;  // Sabtu 11.00-23.59
-      if (day === 0) return time >= 60 && time <= 23 * 60 + 59;       // Ahad 01.00-23.59
+      // Aturan akses baru
+      if (day === 1) return time >= 0 && time <= 23 * 60 + 59; // Senin 00.00–23.59
+      if (day === 2) return time >= 0 && time <= 19 * 60;      // Selasa 00.00–19.00
+      if (day === 3) return time >= 0 && time <= 23 * 60 + 59; // Rabu 00.00–23.59
+      if (day === 4) return time >= 0 && time <= 23 * 60 + 59; // Kamis 00.00–23.59
+      if (day === 5) return time >= 0 && time <= 23 * 60 + 59; // Jumat 00.00–23.59
+      if (day === 6) return (time >= 0 && time <= 7 * 60) || (time >= 12 * 60 && time <= 23 * 60 + 59); // Sabtu 00.00–07.00 & 12.00–23.59
+      if (day === 0) return time >= 0 && time <= 23 * 60 + 59; // Ahad 00.00–23.59
+
       return false;
     }
+
 
     const now = getWIBTime();
     const content = document.getElementById('content');
@@ -146,7 +151,7 @@
         <div class="locked">
           ⚠️ <br><br>
           <b>Permohonan izin berlaku maksimal 2 jam sebelum Latihan.</b><br><br>
-          Akses formulir hanya tersedia pada jam yang ditentukan.<br><br>
+          Akses formulir hanya tersedia pada waktu yang disepakatkan.<br><br>
           <small>Silakan kembali pada waktu yang sesuai jadwal latihan.</small>
         </div>
       `;
