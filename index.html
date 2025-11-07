@@ -10,14 +10,14 @@
     :root {
       --primary: #07693A;
       --muted: #f4f7f4;
-      --radius: 14px;
+      --radius: 10px;
     }
 
     /* RESET & BASE */
     * { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 1;
+      padding: 1;
       height: 100%;
       width: 100%;
       font-family: 'Inter', system-ui, sans-serif;
@@ -38,17 +38,35 @@ body {
 }
 
 
-    /* WRAPPER */
-    .wrap {
-      width: 100%;
-      max-width: 1000px;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      margin: auto;
-    }
+/* WRAPPER */
+.wrap {
+  width: 100%;
+  max-width: 1000px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin: auto;
+  padding: 0 16px; /* Tambah sedikit ruang sisi untuk tampilan HP */
+}
+
+/* RESPONSIVE UNTUK HP */
+@media (max-width: 768px) {
+  .wrap {
+    max-width: 100%;
+    padding: 0 12px; /* kurangi padding agar pas di layar kecil */
+    gap: 14px; /* jarak antar elemen sedikit dikurangi */
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 8px;
+    gap: 10px;
+  }
+}
+
 
     /* HEADER */
     header {
@@ -357,4 +375,3 @@ body {
   </script>
 </body>
 </html>
-
