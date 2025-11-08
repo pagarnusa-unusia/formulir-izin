@@ -22,19 +22,21 @@
         --text: #d8f3e1;
         --shadow: 0 6px 24px rgba(0,0,0,0.4);
       }
+      .card { background: #052c1b; }
+      input[type="text"], input[type="date"], select, textarea { background: #093f28; color: var(--text); }
+      .btn.secondary { background: transparent; }
     }
 
     /* Reset dan Transisi */
     * { box-sizing: border-box; transition: all 0.2s ease; }
 
-    /* Gaya Dasar Body */
+    /* Gaya Dasar Body - Disesuaikan untuk memulai dari atas */
     html, body {
       margin: 0; padding: 0;
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      /* Mencegah scroll horizontal */
       overflow-x: hidden; 
     }
 
@@ -42,18 +44,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 24px 16px; /* Padding sedikit disesuaikan untuk HP */
+      /* justify-content: center; DIHAPUS agar konten mulai dari atas */
+      padding: 0 16px 24px 16px; /* Padding atas diatur kecil/0 */
     }
 
-    /* Header */
+    /* Header - Disesuaikan untuk margin atas */
     header {
       text-align: center;
-      padding-top: 20px;
+      padding-top: 40px; /* Menentukan jarak dari tepi atas layar */
       animation: fadeIn 0.6s ease;
     }
 
     .logo img {
-      width: 85px; /* Sedikit lebih kecil */
+      width: 85px;
       height: 85px;
       border-radius: 50%;
       object-fit: contain;
@@ -61,7 +64,7 @@
     }
 
     .title {
-      font-size: 1.8rem; /* Sedikit lebih kecil */
+      font-size: 1.8rem;
       font-weight: 800;
       margin-top: 10px;
       background: var(--gradient);
@@ -70,7 +73,7 @@
     }
 
     .subtitle {
-      font-size: 0.95rem; /* Sedikit lebih kecil */
+      font-size: 0.95rem;
       font-weight: 600;
       opacity: 0.9;
       margin-top: 4px;
@@ -81,15 +84,11 @@
       background: #fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 20px; /* Padding disesuaikan untuk HP */
+      padding: 20px;
       width: 100%;
       max-width: 640px;
       margin-top: 20px;
       animation: popIn 0.6s ease;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .card { background: #052c1b; }
     }
 
     h2 {
@@ -98,65 +97,55 @@
       font-weight: 700;
       margin-bottom: 18px;
       text-transform: uppercase;
-      /* Sesuai dengan gambar, text di sebelah kiri */
       text-align: left; 
     }
 
     /* Label dan Input */
     label {
       font-weight: 700;
-      color: var(--text); /* Menggunakan warna text yang lebih gelap untuk label */
+      color: var(--text);
       font-size: 0.9rem;
       margin-bottom: 5px;
       display: block;
     }
     
-    /* Menargetkan semua field input/select/textarea */
     input[type="text"], input[type="date"], select, textarea {
       width: 100%;
-      border: 1.6px solid #ccc; /* Border lebih soft */
-      border-radius: 8px; /* Sudut lebih lembut */
-      padding: 12px 14px; /* Padding lebih besar */
+      border: 1.6px solid #ccc;
+      border-radius: 8px;
+      padding: 12px 14px;
       font-size: 1rem;
       background: #fff;
       color: var(--text);
-      /* Menghapus default appearance pada select/input */
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
     }
     
-    /* Mengubah warna border saat focus */
     input:focus, select:focus, textarea:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(7,105,58,0.2);
       outline: none;
     }
 
-    /* Gaya khusus untuk textarea */
     textarea { min-height: 100px; resize: vertical; }
 
-    /* Flex Row untuk Angkatan & Sabuk, Hari & Tanggal */
+    /* Flex Row untuk Responsivitas */
     .row { 
       display: flex; 
       gap: 12px; 
       margin-bottom: 16px; 
       flex-wrap: wrap; 
     }
-    /* Setiap item di row akan mengambil setengah lebar jika ada dua */
+    
     .row > div {
       flex: 1;
-      min-width: calc(50% - 6px); /* Memastikan lebar yang responsif */
-    }
-
-    /* Gaya khusus untuk Tanggal agar tetap 100% pada mobile, namun bisa berdampingan */
-    .tanggal-col {
-        flex: 1;
+      min-width: calc(50% - 6px);
     }
 
     .small { 
         font-size: 0.85rem; 
-        color: #4a4a4a; /* Warna lebih netral */
+        color: #4a4a4a;
         margin-top: 8px; 
         display: block;
     }
@@ -178,17 +167,17 @@
       transition: all 0.2s ease;
       text-align: center;
       text-decoration: none;
+      border: none;
     }
 
     .btn.primary {
       background: var(--gradient);
       color: #fff;
-      border: none;
       box-shadow: 0 4px 12px rgba(7,105,58,0.25);
     }
 
     .btn.secondary {
-      background: #fff;
+      background: transparent;
       color: var(--primary);
       border: 2px solid var(--primary);
     }
@@ -206,9 +195,8 @@
 
     footer div:first-child { font-weight: 600; }
 
-    /* Media Queries untuk Ponsel Kecil */
+    /* Media Queries untuk Ponsel Kecil (Max 480px) */
     @media (max-width: 480px) {
-        /* Memaksa elemen yang berdampingan menjadi satu kolom pada ponsel yang sangat kecil */
         .row:not(.actions) {
             flex-direction: column;
             gap: 0;
@@ -221,12 +209,10 @@
         .tanggal-col {
             margin-bottom: 0;
         }
-        
-        /* Tombol menjadi satu kolom */
         .actions { flex-direction: column; }
     }
 
-    /* Locked State & Toast (Tidak diubah dari aslinya, hanya untuk kelengkapan) */
+    /* Locked State & Toast */
     .locked {
       text-align: center;
       background: #fff;
@@ -238,6 +224,7 @@
       color: var(--primary);
       font-weight: 700;
       font-size: 1.05rem;
+      margin-top: 100px; /* Jarak dari atas saat terkunci */
     }
     .toast {
       position: fixed; bottom: 30px; left: 50%;
@@ -248,7 +235,7 @@
     }
     .toast.show { opacity: 1; pointer-events: auto; }
 
-    /* Animasi (Tidak diubah dari aslinya) */
+    /* Animasi */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
@@ -265,7 +252,6 @@
   <div id="toast" class="toast">✅ Izin berhasil dikirim!</div>
 
   <script>
-    // Fungsi JavaScript untuk logika tanggal dan submit (Hampir tidak diubah, namun ditambahkan inisialisasi elemen)
     function getWIBTime() {
       const now = new Date();
       const utc = now.getTime() + now.getTimezoneOffset() * 60000;
@@ -273,7 +259,6 @@
     }
 
     function isAccessible(now) {
-      // Logika akses tetap sama
       const d = now.getDay(), t = now.getHours() * 60 + now.getMinutes();
       if (d === 1) return t <= 23 * 60 + 59;
       if (d === 2) return t <= 19 * 60;
@@ -285,10 +270,9 @@
 
     const content = document.getElementById("content");
     const now = getWIBTime();
-    let namaEl, angkatanEl, sabukEl, perihalEl, hariEl, tanggalEl; // Deklarasi di luar scope if
+    let namaEl, angkatanEl, sabukEl, perihalEl, hariEl, tanggalEl;
 
     if (!isAccessible(now)) {
-      // Bagian formulir dikunci
       content.innerHTML = `
         <div class="locked">
           ⚠️<br><br>
@@ -297,7 +281,6 @@
           <small>Silakan kembali sesuai jadwal latihan.</small>
         </div>`;
     } else {
-      // Bagian formulir yang aktif
       content.innerHTML = `
         <header>
           <div class="logo"><img src="logopn.png" alt="Logo Pagarnusa"></div>
@@ -387,7 +370,6 @@
 
     function handleSubmit(e) {
       e.preventDefault();
-      // Mengambil nilai elemen yang telah diinisialisasi
       const nama = namaEl ? namaEl.value.trim() : '';
       const angkatan = angkatanEl ? angkatanEl.value : '';
       const sabuk = sabukEl ? sabukEl.value : '';
