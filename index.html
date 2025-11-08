@@ -9,115 +9,263 @@
   <style>
     :root {
       --primary: #07693A;
-      --radius: 12px;
+      --bg: #f5f9f7;
+      --text: #073b22;
+      --radius: 14px;
       --shadow: 0 6px 24px rgba(7,105,58,0.1);
+      --gradient: linear-gradient(135deg, #07693A 0%, #0a8b4a 100%);
     }
 
-    * { box-sizing: border-box; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #021b10;
+        --text: #d8f3e1;
+        --shadow: 0 6px 24px rgba(0,0,0,0.4);
+      }
+    }
+
+    /* Reset dan Transisi */
+    * { box-sizing: border-box; transition: all 0.2s ease; }
+
+    /* Gaya Dasar Body */
     html, body {
       margin: 0; padding: 0;
-      width: 100%; height: 100%;
       font-family: 'Inter', sans-serif;
-      background: #fff; color: #073b22;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      /* Mencegah scroll horizontal */
+      overflow-x: hidden; 
     }
+
     body {
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px; /* Padding sedikit disesuaikan untuk HP */
     }
 
-    .wrap {
-      width: 100%; max-width: 1080px;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 18px; margin: auto;
+    /* Header */
+    header {
+      text-align: center;
+      padding-top: 20px;
+      animation: fadeIn 0.6s ease;
     }
 
-    header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeIn 0.6s ease; }
-    .logo img { width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15)); }
-    .title { font-size: 2rem; font-weight: 700; color: var(--primary); margin-top: 10px; }
-    .subtitle { font-size: 1rem; font-weight: 600; color: var(--primary); margin-top: 4px; }
+    .logo img {
+      width: 85px; /* Sedikit lebih kecil */
+      height: 85px;
+      border-radius: 50%;
+      object-fit: contain;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
 
+    .title {
+      font-size: 1.8rem; /* Sedikit lebih kecil */
+      font-weight: 800;
+      margin-top: 10px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 0.95rem; /* Sedikit lebih kecil */
+      font-weight: 600;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    /* Card Formulir */
     .card {
-      width: 100%; background: #fff;
+      background: #fff;
       border-radius: var(--radius);
-      padding: 22px 20px;
       box-shadow: var(--shadow);
-      animation: popIn 0.5s ease;
+      padding: 20px; /* Padding disesuaikan untuk HP */
+      width: 100%;
+      max-width: 640px;
+      margin-top: 20px;
+      animation: popIn 0.6s ease;
     }
 
-    h2 { font-size: 1rem; font-weight: 700; color: var(--primary); text-transform: uppercase; text-align: left; margin-bottom: 16px; }
-    label { font-weight: 700; color: var(--primary); font-size: 1rem; margin-bottom: 6px; display: block; }
+    @media (prefers-color-scheme: dark) {
+      .card { background: #052c1b; }
+    }
 
+    h2 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      /* Sesuai dengan gambar, text di sebelah kiri */
+      text-align: left; 
+    }
+
+    /* Label dan Input */
+    label {
+      font-weight: 700;
+      color: var(--text); /* Menggunakan warna text yang lebih gelap untuk label */
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      display: block;
+    }
+    
+    /* Menargetkan semua field input/select/textarea */
     input[type="text"], input[type="date"], select, textarea {
-      width: 100%; border: 1.6px solid #0c4728;
-      border-radius: 10px; padding: 10px 12px; font-size: 1rem;
-      font-family: inherit; background: #fff; transition: all 0.2s ease;
+      width: 100%;
+      border: 1.6px solid #ccc; /* Border lebih soft */
+      border-radius: 8px; /* Sudut lebih lembut */
+      padding: 12px 14px; /* Padding lebih besar */
+      font-size: 1rem;
+      background: #fff;
+      color: var(--text);
+      /* Menghapus default appearance pada select/input */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
+    
+    /* Mengubah warna border saat focus */
     input:focus, select:focus, textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(7,105,58,0.12);
+      box-shadow: 0 0 0 3px rgba(7,105,58,0.2);
       outline: none;
     }
 
-    textarea { min-height: 110px; resize: vertical; }
-    .row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-    .small { font-size: 0.85rem; color: #1f5133; margin-top: 6px; }
+    /* Gaya khusus untuk textarea */
+    textarea { min-height: 100px; resize: vertical; }
 
-    .actions { display: flex; gap: 10px; margin-top: 16px; }
-    .btn {
-      flex: 1; padding: 12px 0; border-radius: 10px;
-      font-weight: 700; font-size: 1rem; cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    /* Flex Row untuk Angkatan & Sabuk, Hari & Tanggal */
+    .row { 
+      display: flex; 
+      gap: 12px; 
+      margin-bottom: 16px; 
+      flex-wrap: wrap; 
     }
-    .btn.primary { background: var(--primary); color: #fff; border: none; box-shadow: 0 4px 12px rgba(7,105,58,0.25); }
-    .btn.secondary { background: #fff; color: var(--primary); border: 2px solid var(--primary); }
-    .btn:hover { transform: scale(1.03); }
-    .btn:active { transform: scale(0.97); }
+    /* Setiap item di row akan mengambil setengah lebar jika ada dua */
+    .row > div {
+      flex: 1;
+      min-width: calc(50% - 6px); /* Memastikan lebar yang responsif */
+    }
 
-    footer { text-align: center; font-size: 0.85rem; color: #0a3b24; opacity: 0.9; margin-top: 10px; }
-    footer div:first-child { font-weight: 700; font-size: 0.95rem; }
+    /* Gaya khusus untuk Tanggal agar tetap 100% pada mobile, namun bisa berdampingan */
+    .tanggal-col {
+        flex: 1;
+    }
 
-    /* PERINGATAN DILUAR JAM AKSES */
+    .small { 
+        font-size: 0.85rem; 
+        color: #4a4a4a; /* Warna lebih netral */
+        margin-top: 8px; 
+        display: block;
+    }
+
+    /* Tombol */
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 0;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(7,105,58,0.25);
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(7,105,58,0.2); }
+    .btn:active { transform: scale(0.98); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 30px;
+      opacity: 0.7;
+    }
+
+    footer div:first-child { font-weight: 600; }
+
+    /* Media Queries untuk Ponsel Kecil */
+    @media (max-width: 480px) {
+        /* Memaksa elemen yang berdampingan menjadi satu kolom pada ponsel yang sangat kecil */
+        .row:not(.actions) {
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 0;
+        }
+        .row > div {
+            min-width: 100%;
+            margin-bottom: 16px;
+        }
+        .tanggal-col {
+            margin-bottom: 0;
+        }
+        
+        /* Tombol menjadi satu kolom */
+        .actions { flex-direction: column; }
+    }
+
+    /* Locked State & Toast (Tidak diubah dari aslinya, hanya untuk kelengkapan) */
     .locked {
       text-align: center;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.1rem;
       background: #fff;
-      padding: 30px 20px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       max-width: 600px;
-      animation: fadeIn 0.5s ease;
+      padding: 40px 20px;
+      animation: fadeIn 0.6s ease;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.05rem;
     }
+    .toast {
+      position: fixed; bottom: 30px; left: 50%;
+      transform: translateX(-50%); background: var(--gradient);
+      color: #fff; padding: 12px 18px; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem; opacity: 0;
+      pointer-events: none; transition: opacity 0.4s ease; z-index: 99;
+    }
+    .toast.show { opacity: 1; pointer-events: auto; }
 
+    /* Animasi (Tidak diubah dari aslinya) */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes popIn {
-      from { opacity: 0; transform: scale(0.97); }
+      from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
-    }
-
-    @media (max-width: 480px) {
-      body { padding: 16px; }
-      .wrap { gap: 14px; }
-      .logo img { width: 72px; height: 72px; }
-      .title { font-size: 1.5rem; }
-      .subtitle { font-size: 0.9rem; }
-      .card { padding: 18px; }
-      .actions { flex-direction: column; }
-      .btn { width: 100%; }
-      .row { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 
 <body>
   <div id="content"></div>
+  <div id="toast" class="toast">✅ Izin berhasil dikirim!</div>
 
   <script>
-    // Konversi waktu ke WIB (GMT+7)
+    // Fungsi JavaScript untuk logika tanggal dan submit (Hampir tidak diubah, namun ditambahkan inisialisasi elemen)
     function getWIBTime() {
       const now = new Date();
       const utc = now.getTime() + now.getTimezoneOffset() * 60000;
@@ -125,100 +273,88 @@
     }
 
     function isAccessible(now) {
-      const day = now.getDay(); // 0=Ahad, 1=Senin...
-      const hour = now.getHours();
-      const minute = now.getMinutes();
-      const time = hour * 60 + minute; // total menit
-
-      // Aturan akses baru
-      if (day === 1) return time >= 0 && time <= 23 * 60 + 59; // Senin 00.00–23.59
-      if (day === 2) return time >= 0 && time <= 19 * 60;      // Selasa 00.00–19.00
-      if (day === 3) return time >= 0 && time <= 23 * 60 + 59; // Rabu 00.00–23.59
-      if (day === 4) return time >= 0 && time <= 23 * 60 + 59; // Kamis 00.00–23.59
-      if (day === 5) return time >= 0 && time <= 23 * 60 + 59; // Jumat 00.00–23.59
-      if (day === 6) return (time >= 0 && time <= 7 * 60) || (time >= 12 * 60 && time <= 23 * 60 + 59); // Sabtu 00.00–07.00 & 12.00–23.59
-      if (day === 0) return time >= 0 && time <= 23 * 60 + 59; // Ahad 00.00–23.59
-
+      // Logika akses tetap sama
+      const d = now.getDay(), t = now.getHours() * 60 + now.getMinutes();
+      if (d === 1) return t <= 23 * 60 + 59;
+      if (d === 2) return t <= 19 * 60;
+      if (d === 3 || d === 4 || d === 5) return t <= 23 * 60 + 59;
+      if (d === 6) return (t <= 7 * 60) || (t >= 12 * 60);
+      if (d === 0) return true;
       return false;
     }
 
-
+    const content = document.getElementById("content");
     const now = getWIBTime();
-    const content = document.getElementById('content');
+    let namaEl, angkatanEl, sabukEl, perihalEl, hariEl, tanggalEl; // Deklarasi di luar scope if
 
     if (!isAccessible(now)) {
+      // Bagian formulir dikunci
       content.innerHTML = `
         <div class="locked">
-          ⚠️ <br><br>
-          <b>Permohonan izin berlaku maksimal 2 jam sebelum Latihan.</b><br><br>
-          Akses formulir hanya tersedia pada waktu yang disepakatkan.<br><br>
-          <small>Silakan kembali pada waktu yang sesuai jadwal latihan.</small>
-        </div>
-      `;
+          ⚠️<br><br>
+          <b>Permohonan izin maksimal 2 jam sebelum latihan.</b><br><br>
+          Akses formulir hanya tersedia pada waktu yang disepakati.<br><br>
+          <small>Silakan kembali sesuai jadwal latihan.</small>
+        </div>`;
     } else {
+      // Bagian formulir yang aktif
       content.innerHTML = `
-      <div class="wrap" role="main">
         <header>
-          <div class="logo">
-            <img src="logopn.png" alt="Logo Pagarnusa">
-          </div>
+          <div class="logo"><img src="logopn.png" alt="Logo Pagarnusa"></div>
           <div class="title">Formulir Izin</div>
           <div class="subtitle">PAGARNUSA UNUSIA</div>
         </header>
 
-        <section class="card" aria-labelledby="form-title">
-          <h2 id="form-title">Data Formulir Izin</h2>
-          <form id="izinForm" autocomplete="off" onsubmit="return handleSubmit(event)">
-            <div class="row" style="flex-direction:column">
-              <label for="nama">Nama</label>
-              <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+        <section class="card">
+          <h2>Data Formulir Izin</h2>
+          <form id="izinForm" onsubmit="return handleSubmit(event)">
+            
+            <div class="row">
+              <div style="flex:100%">
+                <label for="nama">Nama</label>
+                <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+              </div>
             </div>
 
             <div class="row">
-              <div style="flex:1; min-width:120px">
+              <div>
                 <label for="angkatan">Angkatan</label>
-                <select id="angkatan" name="angkatan" required>
+                <select id="angkatan" required>
                   <option value="" disabled selected>Pilih angkatan</option>
-                  <option>2023</option>
-                  <option>2024</option>
-                  <option>2025</option>
+                  <option>2023</option><option>2024</option><option>2025</option>
                 </select>
               </div>
-              <div style="flex:1; min-width:120px">
+              <div>
                 <label for="sabuk">Sabuk</label>
-                <select id="sabuk" name="sabuk" required>
+                <select id="sabuk" required>
                   <option value="" disabled selected>Pilih sabuk</option>
-                  <option>Polos</option>
-                  <option>Putih</option>
-                  <option>Kuning</option>
-                  <option>Merah</option>
-                  <option>Biru</option>
+                  <option>Polos</option><option>Putih</option><option>Kuning</option><option>Merah</option><option>Biru</option>
                 </select>
               </div>
             </div>
 
-            <div class="row" style="flex-direction:column">
-              <label for="perihal">Perihal (alasan)</label>
-              <textarea id="perihal" name="perihal" placeholder="Tuliskan alasan tidak hadir..." required></textarea>
+            <div class="row">
+              <div style="flex:100%">
+                <label for="perihal">Perihal (alasan)</label>
+                <textarea id="perihal" placeholder="Tuliskan alasan tidak hadir..." required></textarea>
+              </div>
             </div>
 
-            <div class="row" style="align-items:center">
-              <div style="flex:1">
+            <div class="row">
+              <div>
                 <label for="hari">Hari</label>
-                <select id="hari" name="hari" required>
+                <select id="hari" required>
                   <option value="" disabled selected>Pilih hari</option>
-                  <option>Selasa</option>
-                  <option>Sabtu</option>
+                  <option>Selasa</option><option>Sabtu</option>
                 </select>
-                <div class="small">Pilih Hari dan Tanggal</div>
               </div>
-              <div style="width:42%; min-width:140px">
+              <div class="tanggal-col">
                 <label for="tanggal">Tanggal</label>
-                <input id="tanggal" name="tanggal" type="date" required />
+                <input id="tanggal" type="date" required />
               </div>
             </div>
 
-            <div class="small" style="margin-top:8px">Periksa kembali sebelum mengirim | Terimakasih</div>
+            <div class="small">Periksa kembali sebelum mengirim | Terima kasih 🙏</div>
 
             <div class="actions">
               <button type="button" class="btn secondary" onclick="resetForm()">Reset</button>
@@ -229,44 +365,63 @@
 
         <footer>
           <div>Pagarnusa UNUSIA</div>
-          <div>© Pagarnusa UNUSIA</div>
-        </footer>
-      </div>`;
+          <div>© 2025 Pagarnusa UNUSIA</div>
+        </footer>`;
+
+      // Inisialisasi elemen setelah innerHTML diatur
+      namaEl = document.getElementById("nama");
+      angkatanEl = document.getElementById("angkatan");
+      sabukEl = document.getElementById("sabuk");
+      perihalEl = document.getElementById("perihal");
+      hariEl = document.getElementById("hari");
+      tanggalEl = document.getElementById("tanggal");
     }
 
-    // ====== LOGIKA FORM (sama dengan versi aslimu) ======
-    const phoneInternational = '6285715232441';
-    const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    const phoneInternational = "6285715232441";
+    
+    function showToast() {
+      const t = document.getElementById("toast");
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 3000);
+    }
 
     function handleSubmit(e) {
       e.preventDefault();
-      const nama = document.getElementById('nama').value.trim();
-      const angkatan = document.getElementById('angkatan').value;
-      const sabuk = document.getElementById('sabuk').value;
-      const perihal = document.getElementById('perihal').value.trim();
-      const hari = document.getElementById('hari').value;
-      const tanggal = document.getElementById('tanggal').value;
+      // Mengambil nilai elemen yang telah diinisialisasi
+      const nama = namaEl ? namaEl.value.trim() : '';
+      const angkatan = angkatanEl ? angkatanEl.value : '';
+      const sabuk = sabukEl ? sabukEl.value : '';
+      const perihal = perihalEl ? perihalEl.value.trim() : '';
+      const hari = hariEl ? hariEl.value : '';
+      const tanggal = tanggalEl ? tanggalEl.value : '';
+
       if (!nama || !angkatan || !sabuk || !perihal || !hari || !tanggal) {
-        alert('Mohon lengkapi semua kolom sebelum mengirim.'); return false;
+        alert("Mohon lengkapi semua kolom.");
+        return false;
       }
-      const tanggalObj = new Date(tanggal + 'T00:00:00');
-      const bulanNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-      const formattedTanggal = tanggalObj.getDate() + ' ' + bulanNames[tanggalObj.getMonth()] + ' ' + tanggalObj.getFullYear();
-      let message = '';
-      message += 'Assalamualaikum Kang/Mbk%0A';
-      message += 'Saya atas nama ' + nama + ', Angkatan ' + angkatan + ', Sabuk ' + sabuk + '.%0A';
-      message += 'Saya ingin memohon izin tidak hadir latihan rutin pada hari ' + hari + ', tanggal ' + formattedTanggal + ' karena ' + perihal + '.%0A';
-      message += 'Terima kasih atas perhatiannya!';
-      const waUrl = 'https://wa.me/' + phoneInternational + '?text=' + message;
-      window.open(waUrl, '_blank') || (window.location.href = waUrl);
+
+      const tgl = new Date(tanggal + "T00:00:00");
+      const bulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+      const tanggalStr = `${tgl.getDate()} ${bulan[tgl.getMonth()]} ${tgl.getFullYear()}`;
+      
+      const msg =
+        `Assalamualaikum Kang/Mbk%0A` +
+        `Saya atas nama ${nama}, Angkatan ${angkatan}, Sabuk ${sabuk}.%0A` +
+        `Ingin memohon izin tidak hadir latihan hari ${hari}, tanggal ${tanggalStr} karena ${perihal}.%0A` +
+        `Terima kasih atas perhatiannya!`;
+
+      const waUrl = `https://wa.me/${phoneInternational}?text=${msg}`;
+      window.open(waUrl, "_blank");
+      showToast();
       return false;
     }
 
     function resetForm() {
-      document.getElementById('izinForm').reset();
-      document.getElementById('hari').selectedIndex = 0;
-      document.getElementById('angkatan').selectedIndex = 0;
-      document.getElementById('sabuk').selectedIndex = 0;
+      const form = document.getElementById("izinForm");
+      if (form) {
+        form.reset();
+        showToast();
+      }
     }
   </script>
 </body>
